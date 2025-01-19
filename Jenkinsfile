@@ -16,20 +16,30 @@ pipeline {
               
             }
         }
+
+         stage('Build docker image'){
+            steps{
+                script{
+                     echo "docker image is build"
+                    sh 'docker build -t Nancy2209/star-agile-banking-finance_project:v1 .'
+                    sh 'docker images'
+                }
+            }
+        }
+         
         stage('Building docker image'){
             steps{
                 echo "docker image is build"
-                sh 'docker build -t Nancy2209/healthcare-nancy:v1'
+                 sh 'docker build -t Nancy2209/healthcare-nancy_project:v1 .'
+                 sh 'docker images'
               
             }
         }
          stage('Docker Login'){
             steps{
-               withCredentials([string(credentialsId: 'dockerhubpass', variable: 'dockerhubpass')]) {
-               sh 'docker login -u Nancy2209 -p ${dockerhubpass}'
                sh 'docker push Nancy2209/healthcare-nancy:v1'
-}
+              }
             }
-        }
+        
 }
 }
