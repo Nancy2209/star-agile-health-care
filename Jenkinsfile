@@ -16,5 +16,12 @@ pipeline {
               
             }
         }
+        stage('Building docker image'){
+            steps{
+                echo "docker image is build"
+                sh 'docker build -t healthcare-nancy .'
+              
+            }
+        }
 }
 }
