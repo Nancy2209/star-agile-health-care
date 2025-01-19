@@ -16,16 +16,6 @@ pipeline {
               
             }
         }
-
-         stage('Build docker image'){
-            steps{
-                script{
-                     echo "docker image is build"
-                    sh 'docker build -t Nancy2209/star-agile-banking-finance_project:v1 .'
-                    sh 'docker images'
-                }
-            }
-        }
          
         stage('Building docker image'){
             steps{
@@ -35,6 +25,5 @@ pipeline {
               
             }
         }
-         
 }
 }
