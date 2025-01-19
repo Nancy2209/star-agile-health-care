@@ -19,14 +19,15 @@ pipeline {
         stage('Building docker image'){
             steps{
                 echo "docker image is build"
-                sh 'docker build -t healthcare-nancy .'
+                sh 'docker build -t Nancy2209/healthcare-nancy:v1'
               
             }
         }
          stage('Docker Login'){
             steps{
                withCredentials([string(credentialsId: 'dockerhubpass', variable: 'dockerhubpass')]) {
-               sh 'docker login -u nancydocker -p ${dockerhubpass}'
+               sh 'docker login -u Nancy2209 -p ${dockerhubpass}'
+               sh 'docker push Nancy2209/healthcare-nancy:v1'
 }
             }
         }
