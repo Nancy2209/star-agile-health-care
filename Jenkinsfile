@@ -25,5 +25,12 @@ pipeline {
               
             }
         }
+        stage('Running Ansible'){
+            steps{
+                echo "Envoking Ansible on test server"
+               ansiblePlaybook become: true, credentialsId: 'ansible', disableHostKeyChecking: true, installation: 'ansible', inventory: '/etc/ansible/hosts', playbook: 'ansible-playbook.yml', vaultTmpPath: ''
+              
+            }
+        }
 }
 }
