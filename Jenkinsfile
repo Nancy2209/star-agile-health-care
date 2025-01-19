@@ -23,5 +23,12 @@ pipeline {
               
             }
         }
+         stage('Docker Login'){
+            steps{
+               withCredentials([string(credentialsId: 'dockerhubpass', variable: 'dockerhubpass')]) {
+               sh 'docker login -u nancydocker -p ${dockerhubpass}'
+}
+            }
+        }
 }
 }
