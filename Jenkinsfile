@@ -35,13 +35,6 @@ pipeline {
               
             }
         }
-         stage('Docker Login'){
-            steps{
-               withCredentials([string(credentialsId: 'dockerhubpass', variable: 'dockerhubpass')]) {
-               sh 'docker login -u Nancy2209 -p ${dockerhubpass}'
-               sh 'docker push Nancy2209/healthcare-nancy:v1'
-              }
-            }
-        }
+         
 }
 }
